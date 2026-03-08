@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Book>
+
+<h1 class="text-center">Library</h1>
+
+<div class="m-2 p-2">
+	<a asp-action="Create" asp-controller="Book" class="btn btn-primary small">New Book</a>
+</div>
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">Title</th>
+			<th scope="col">Author</th>
+			<th scope="col">Describtion</th>
+			<th scope="col">Category</th>
+			<th scope="col">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var n in Model)
+				{
+				
+		<tr class="table-brimary">
+			
+					<td>@n.Title</td>
+					<td>@n.Author</td>
+					<td>@n.Description</td>
+					<td>@n.Category?.Name</td>
+				<td>
+					<a asp-controller="Book" asp-action="Edit" class="btn btn-success" asp-route-Id="@n.Id"><i class="bi bi-pen"></i></a>
+				&nbsp;
+					<a asp-controller="Book" asp-action="Delete" class="btn btn-danger" asp-route-Id="@n.Id"><i class="bi bi-calendar-x"></i></a>
+			</td>
+					
+				
+			
+		</tr>
+		
+				}
+				
+	</tbody>
+</table>
+
+@section Scripts{
+     <partial name="_ValidationScriptsPartial"/>
+	 <partial name="_Notifications" />
+}

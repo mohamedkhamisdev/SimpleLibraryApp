@@ -1,0 +1,10 @@
+﻿@if (ViewBag.LatestBooks != null)
+{
+    <h3>The Latest Books</h3>
+    <ul>
+        @foreach (var book in ViewBag.LatestBooks)
+        {
+            <li>@book.Title - @book.Author (@book.Category?.Name)</li>
+        }
+    </ul>
+}
